@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <button class="menu-toggle" id="menu-toggle">☰</button>
+                <h1>Mi Dashboard</h1>
+                <div class="user-info">
+                    <span>Usuario</span>
+                    <img src="https://via.placeholder.com/40" alt="Avatar">
+                </div>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>Menu</h2>
+            </div>
+            <ul class="menu">
+                <li><a href="#" class="menu-item active" data-section="dashboard">📊 Dashboard</a></li>
+                <li><a href="#" class="menu-item" data-section="usuarios">👥 Usuarios</a></li>
+                <li><a href="#" class="menu-item" data-section="productos">📦 Productos</a></li>
+                <li><a href="#" class="menu-item" data-section="ventas">💰 Ventas</a></li>
+                <li><a href="#" class="menu-item" data-section="configuracion">⚙️ Configuración</a></li>
+                <li><a href="#" class="menu-item" data-section="reportes">📈 Reportes</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" id="main-content">
+            <div class="content-section active" id="dashboard">
+                <h2>Dashboard Principal</h2>
+                <div class="widgets">
+                    <div class="widget">
+                        <h3>Total Usuarios</h3>
+                        <p class="metric">1,234</p>
+                    </div>
+                    <div class="widget">
+                        <h3>Ventas Hoy</h3>
+                        <p class="metric" id="ventas-hoy-metric">$5,678</p>
+                    </div>
+                    <div class="widget">
+                        <h3>Pedidos Pendientes</h3>
+                        <p class="metric">23</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-section" id="usuarios">
+                <h2>Gestión de Usuarios</h2>
+                <p>Contenido para usuarios...</p>
+            </div>
+            <div class="content-section" id="productos">
+                <h2>Gestión de Productos</h2>
+                <div class="product-panel">
+                    <form id="product-form" class="product-form">
+                        <div class="form-row">
+                            <label for="product-name">Nombre:</label>
+                            <input id="product-name" type="text" placeholder="Nombre del producto" required />
+                        </div>
+                        <div class="form-row">
+                            <label for="product-price">Precio:</label>
+                            <input id="product-price" type="number" step="0.01" min="0.01" placeholder="0.00" required />
+                        </div>
+                        <div class="form-row">
+                            <label for="product-stock">Stock:</label>
+                            <input id="product-stock" type="number" min="0" value="1" required />
+                        </div>
+                        <button type="submit" class="primary-btn">Agregar producto</button>
+                        <p id="product-message" class="sale-message"></p>
+                    </form>
+
+                    <table class="product-table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="product-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content-section" id="ventas">
+                <h2>Ventas</h2>
+                <form id="sale-form" class="sale-form">
+                    <div class="form-row">
+                        <label for="customer-name">Nombre Cliente:</label>
+                        <input id="customer-name" type="text" placeholder="Nombre completo" required />
+                    </div>
+                    <div class="form-row">
+                        <label for="customer-phone">Teléfono:</label>
+                        <input id="customer-phone" type="tel" placeholder="Ej. 5551234567" required />
+                    </div>
+                    <div class="form-row">
+                        <label for="customer-id">Cédula / DNI:</label>
+                        <input id="customer-id" type="text" placeholder="Número de identificación" required />
+                    </div>
+                    <div class="form-row">
+                        <label for="customer-address">Dirección:</label>
+                        <input id="customer-address" type="text" placeholder="Dirección del cliente" required />
+                    </div>
+                    <div class="form-row">
+                        <label for="sale-date">Fecha de Venta:</label>
+                        <input id="sale-date" type="text" readonly />
+                    </div>
+                    <div class="form-row">
+                        <label for="product-select">Producto:</label>
+                        <select id="product-select" required>
+                            <option value="" disabled selected>Seleccione un producto</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label for="quantity-input">Cantidad:</label>
+                        <input id="quantity-input" type="number" min="1" value="1" required />
+                    </div>
+                    <div class="form-row total-row">
+                        <span>Total:</span>
+                        <span id="total-amount">$0.00</span>
+                    </div>
+                    <button type="submit" class="primary-btn">Realizar venta</button>
+                    <p id="sale-message" class="sale-message"></p>
+                </form>
+
+                <section class="sales-history">
+                    <h3>Ventas realizadas</h3>
+                    <ul id="sales-list" class="sales-list"></ul>
+                </section>
+            </div>
+            <div class="content-section" id="configuracion">
+                <h2>Configuración</h2>
+                <form id="settings-form" class="sale-form">
+                    <div class="form-row">
+                        <label for="language-select">Idioma</label>
+                        <select id="language-select">
+                            <option value="es" selected>Español</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label for="theme-select">Tema</label>
+                        <select id="theme-select">
+                            <option value="dark" selected>Oscuro</option>
+                            <option value="light">Claro</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label for="currency-select">Moneda</label>
+                        <select id="currency-select">
+                            <option value="$" selected>USD ($)</option>
+                            <option value="€">EUR (€)</option>
+                            <option value="CLP">CLP</option>
+                        </select>
+                    </div>
+                    <button type="button" id="save-settings" class="primary-btn">Guardar configuración</button>
+                    <p id="settings-message" class="sale-message"></p>
+                </form>
+            </div>
+            <div class="content-section" id="reportes">
+                <h2>Reportes</h2>
+                <div class="report-filters">
+                    <div>
+                        <label for="report-from">Desde</label>
+                        <input id="report-from" type="date" />
+                    </div>
+                    <div>
+                        <label for="report-to">Hasta</label>
+                        <input id="report-to" type="date" />
+                    </div>
+                    <div>
+                        <label for="report-customer">Cliente</label>
+                        <input id="report-customer" type="text" placeholder="Nombre cliente" />
+                    </div>
+                    <button id="report-refresh" class="primary-btn">Actualizar</button>
+                </div>
+                <div class="report-summary">
+                    <p>Total ventas: <span id="report-total-count">0</span></p>
+                    <p>Monto total: <span id="report-total-amount">$0.00</span></p>
+                </div>
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Cliente</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="report-table-body"></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
