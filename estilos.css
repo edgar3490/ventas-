@@ -89,7 +89,6 @@ body {
     border-radius: 6px;
     transition: 0.2s;
 }
-
 .menu-item:hover,
 .menu-item.active {
     background: #1e293b;
@@ -223,4 +222,47 @@ th, td {
     width: calc(100% - 260px);
     height: 100%;
     background: rgba(0,0,0,0.4);
+}
+
+/* ===== MOBILE MENU FIX ===== */
+
+@media (max-width: 768px) {
+
+    /* Sidebar oculto por defecto */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -260px; /* lo escondemos */
+        width: 260px;
+        height: 100%;
+        background: #111;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+
+    /* Cuando se abre */
+    .sidebar.open {
+        left: 0;
+    }
+
+    /* Botón menú visible */
+    #menu-toggle {
+        display: block;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1100;
+        font-size: 22px;
+        background: #111;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    /* Contenido ocupa todo */
+    .main-content {
+        margin-left: 0 !important;
+        padding-top: 60px;
+    }
 }
